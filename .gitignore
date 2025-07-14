@@ -1,0 +1,38 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build outputs
+dist/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Cache directories
+.npm
+.pnpm
+.cache
+
+# Editor directories and files
+.tool-versions
+.idea/
+.vscode/
+*.code-workspace
+.DS_Store
+.zed
+
+# Logs
+logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Testing
+coverage/
+
+# Package files
+*.tgz
+
+# Temporary files
+.tmp/
+temp/
