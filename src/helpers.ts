@@ -1,4 +1,4 @@
-import type { JSONSchemaObject } from "./index";
+import type { FastifySchema } from "fastify";
 
 export function mapValues<T, U>(
     fn: (value: T, key: string, obj: Record<string, T>) => U,
@@ -13,10 +13,20 @@ export function mapValues<T, U>(
     return result;
 }
 
-function isRecord(x: unknown): x is Record<string, unknown> {
+export function isRecord(x: unknown): x is Record<string, unknown> {
     return x !== null && (typeof x === "object" || typeof x === "function");
 }
 
-export function hasMethod(m: string, x: unknown): x is { [m]: () => JSONSchemaObject } {
+export function hasMethod<R>(m: string, x: unknown): x is { [m]: () => R } {
     return isRecord(x) && m in x && typeof x[m] === "function";
 }
+
+type Expand<T> = T extends infer O ? { [K in keyof O]: O[K] } : never;
+type ReplaceUnknown<T, R = string> = {
+    [K in keyof T]: T[K] extends unknown ? (unknown extends T[K] ? R : T[K]) : T[K];
+};
+export type MappedFastifySchema<T> = Expand<
+    ReplaceUnknown<Omit<FastifySchema, "response">, T> & {
+        response?: Record<string, T>;
+    }
+>;

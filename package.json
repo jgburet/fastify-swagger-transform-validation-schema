@@ -1,8 +1,19 @@
 {
     "name": "fastify-swagger-transform-validation-schema",
     "version": "0.1.0",
-    "description": "",
-    "keywords": [],
+    "description": "Bridging the gap between your validation schemas and `@fastify/swagger`, so you can generate your OpenAPI documentation",
+    "keywords": [
+        "fastify",
+        "swagger",
+        "openapi",
+        "json schema",
+        "validation",
+        "zod",
+        "arktype",
+        "valibot",
+        "transform",
+        "schema conversion"
+    ],
     "author": "jgburet",
     "repository": "github:jgburet/fastify-swagger-transform-validation-schema",
     "license": "MIT",
@@ -18,6 +29,13 @@
     "files": [
         "dist"
     ],
+    "engines": {
+        "node": ">=18.0.0"
+    },
+    "peerDependencies": {
+        "@fastify/swagger": ">=8.0.0",
+        "fastify": ">=4.0.0"
+    },
     "scripts": {
         "build:cjs": "tsc -p tsconfig.cjs.json",
         "build:esm": "tsc -p tsconfig.esm.json",
@@ -27,9 +45,9 @@
     },
     "devDependencies": {
         "@biomejs/biome": "^1.9.4",
+        "@fastify/swagger": "^9.5.1",
         "@types/node": "^22.15.30",
         "fastify": "^5.3.3",
-        "openapi-types": "^12.1.3",
         "typescript": "^5.8.3"
     }
 }
